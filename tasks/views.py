@@ -55,7 +55,6 @@ def signin(request):
     else:
         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
-        
         if user is None:
             return render(request, 'signin.html', {
             'form': AuthenticationForm,
@@ -64,6 +63,3 @@ def signin(request):
         else:
             login(request, user)    
             return redirect('tasks')
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
